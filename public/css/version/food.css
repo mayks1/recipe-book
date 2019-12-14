@@ -128,8 +128,23 @@ p {
 }
 
 #cta {
-    background: rgba(0, 0, 0, 0) url(../../images/header-bg-1.jpg) no-repeat scroll top center / cover;
+    background: rgba(0, 0, 0, 0) url(../../images/header-bg-1.jpg) no-repeat scroll center center / cover;
+    background-attachment: fixed;
     position: relative;
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (max-width: 767px) {
+    #cta {
+        background: rgba(0, 0, 0, 0) url(../../images/header-bg-mobile-1.jpg) no-repeat scroll center center / cover;
+    }
+  }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #cta {
+        background: rgba(0, 0, 0, 0) url(../../images/header-bg-small-1.jpg) no-repeat scroll center center / cover;
+    }
 }
 
 .sidebar .widget {
