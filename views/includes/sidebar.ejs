@@ -1,0 +1,52 @@
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <div class="sidebar">
+        <div class="widget box-shadow--lightgrey">
+            <h2 class="widget-title">Търси</h2>
+            <form class="search-form">
+                <input type="text" class="form-control" placeholder="Търсене в Рецептите">
+            </form>
+        </div><!-- end widget -->
+
+        <div class="widget box-shadow--lightgrey">
+            <h2 class="widget-title">Последни Рецепти</h2>
+            <div class="blog-list-widget">
+                <div class="list-group">
+    
+                 <% lastTreeRecipes.forEach((el) => { %>
+
+                      <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="w-100 justify-content-between">
+                            <img src="<%= el.image %>" alt="" class="img-fluid float-left">
+                            <h5 class="mb-1"><%= el.title %></h5>
+                            <small><%= el.createdDate.toLocaleDateString("bg") %></small>
+                        </div>
+                    </a>
+
+                 <% }) %>
+                    
+
+                </div>
+            </div><!-- end blog-list -->
+        </div><!-- end widget -->
+
+        <div class="widget box-shadow--lightgrey">
+            <h2 class="widget-title">Реклама</h2>
+            <div class="banner-spot clearfix">
+                <div class="banner-img">
+                    <img src="/upload/banner_03.jpg" alt="" class="img-fluid">
+                </div><!-- end banner-img -->
+            </div><!-- end banner -->
+        </div><!-- end widget -->
+
+        <div class="widget box-shadow--lightgrey">
+            <h2 class="widget-title">Популярни Категории</h2>
+            <div class="link-widget">
+                <ul>
+                  <% categoryList.forEach((el) => { %>
+                      <li><a href="#"><%= el.category %> <span><%= el.number %></span></a></li>
+                  <% }) %>
+                </ul>
+            </div><!-- end link-widget -->
+        </div><!-- end widget -->
+    </div><!-- end sidebar -->
+</div>

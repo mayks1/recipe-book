@@ -7,10 +7,13 @@ const expressSession  = require('express-session')
 const connectMongo    = require('connect-mongo')
 const connectFlash    = require('connect-flash')
 // const cookieParser    = require('cookie-parser')
-const sassMiddleware  = require('node-sass-middleware');
+// const sassMiddleware  = require('node-sass-middleware')
 const mongoose        = require('mongoose')
 const router          = require('./router')
 const port            = 3000
+// const numberCategoryInList = require('./utils/functions')
+// const Recipe = require('./database/models/Recipe')
+const sidebarCategory = require('./middleware/sideBar')
 
 
 const app = express()
@@ -48,9 +51,10 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 // Set Global Variable for all the Routes
-app.use('*', (req, res, next) => {
+app.use('*', sidebarCategory, (req, res, next) => {
 
   res.locals.auth = req.session.userId
+  res.locals.username = req.session.username
   
   next()
 
@@ -64,13 +68,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-// sassMiddleware
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
-}))
+// // sassMiddleware
+// app.use(sassMiddleware({
+//   src: path.join(__dirname, 'public'),
+//   dest: path.join(__dirname, 'public'),
+//   indentedSyntax: true, // true = .sass and false = .scss
+//   sourceMap: true
+// }))
+
 
 
 // ----------------  ROUTES  -----------------------------

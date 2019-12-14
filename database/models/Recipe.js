@@ -3,15 +3,28 @@ const mongoose = require('mongoose')
 
 const RecipeSchema = new mongoose.Schema({
 
-    username: String,
+    // username: String,
 
-    title: String,
+    title: {
+        type: String,
+        required: [true, 'Моля въведете Заглавие!']
 
-    category: String,
+    },
 
-    ingredients: String,
+    category: {
+        type: String,
+        required: [true, 'Моля изберете категория!']
+    },
 
-    content: String,
+    ingredients: {
+        type: String,
+        required: [true, 'Моля въведете продукти']
+    },
+
+    content: {
+        type: String,
+        required: [true, 'Моля въведете начин на приготвяне']
+    },
 
     author: {
 
@@ -22,7 +35,10 @@ const RecipeSchema = new mongoose.Schema({
         required: true
     },
 
-    image: String,
+    image: {
+        type: String,
+        required: [true, 'Моля, изберете снимка']
+    },
 
     createdDate: {
         type: Date,

@@ -1,3 +1,17 @@
+:root {
+  --bg-color: #3d4144;
+  --boxShadow: #000000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-color);
+}
+
+
 .alert-secondary {
   color: #3d4144;
   background-color: #e2e3e5; }
@@ -6,6 +20,146 @@
   color: white; }
 
 .box-shadow--lightgrey {
-  box-shadow: 2px 2px 5px lightgrey; }
+  box-shadow: 2px 2px 5px var(--boxShadow);
+}
 
-/*# sourceMappingURL=style.css.map */
+.recipe-header {
+  margin-top: 2rem;
+  background-color: #e2e3e5;
+  text-align: center;
+}
+
+.recipe-header p {
+  color: #3d4144;
+  font-size: 1rem;
+}
+
+.recipe-image {
+  padding: .4rem;
+  background-color: #fff;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+.recipe-title {
+  color: #e2e3e5;
+}
+
+.recipe-text-h4 {
+  font-weight: 500;
+  color: #a3a5a8;
+}
+
+.recipe-text {
+  color: #111111;
+  background-color: #ffffff;
+  padding: .8rem .8rem .8rem 1rem;
+  border-radius: .2rem;
+  font-weight: 500;
+}
+
+.form-button {
+  display: inline-block;
+}
+
+.label {
+  display: inline-block;
+  padding: .2em .6em .3em;
+  font-size: 90%;
+  /* font-weight: 700; */
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  margin-bottom: .6em;
+}
+
+.label-danger {
+  background-color: #d9534f;
+}
+
+.alert {
+  padding: .50rem;
+  border: 0;
+}
+
+/* ---------------- Bootstrap ----------------*/
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #545b62;
+  border-color: #4e555b;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-secondary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-danger:focus, .btn-danger.focus {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #b21f2d;
+}
+
+.btn-danger:not(:disabled):not(.disabled):active:focus, .btn-danger:not(:disabled):not(.disabled).active:focus,
+.show > .btn-danger.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
+}
+/* ----------------END of Bootstrap ----------------*/

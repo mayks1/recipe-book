@@ -1344,7 +1344,7 @@ hr.invis3 {
 
 .wb {
     background-color: #ffffff;
-    border-top: 1px dashed #dadada;
+    /* border-top: 1px dashed #dadada; */
 }
 
 .form-wrapper h4 {

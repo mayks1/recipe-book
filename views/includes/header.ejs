@@ -21,9 +21,6 @@
                                 <a class="nav-link" href="/">Начало</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/blog/recipe/create">Побликуване на Рецепта</a>
-                            </li> 
-                            <li class="nav-item">
                                 <a class="nav-link" href="/contact">Контакт</a>
                             </li>  
 
@@ -35,6 +32,12 @@
                                     <a class="nav-link" href="/auth/register">Регистрация</a>
                                 </li>  
                             <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/user/recipes/<%= auth %>"><%= username %></a>
+                                </li>  
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog/recipe/create">Побликуване на Рецепта</a>
+                                </li> 
                                 <li class="nav-item">
                                     <a class="nav-link" href="/auth/logout">Изход</a>
                                 </li>  

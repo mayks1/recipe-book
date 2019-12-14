@@ -6,41 +6,75 @@ const Recipe = require('../database/models/Recipe')
 exports.create = (req, res) => {
 
    if(req.session.userId) {
-      return res.render('create', { title: 'Създаване на рецепта'})
+
+      let recipeData = req.flash('recipeData')[0]
+
+      if (!recipeData) recipeData = {}
+
+      return res.render('create', {
+         title: 'Създаване на рецепта',
+         errors: req.flash('recipeErrors'),
+         recipeData
+      })
    }
 
    res.redirect('/auth/login')
    
 }
 
+// ========================================================================================
 
-/* Post Create page. */
+/* Recipe Create page. */
 
 exports.save = (req, res) => {
-
-   const { image } = req.files
    
-   image.mv(path.resolve('public/recipes', image.name), (error) => {
+   if (!req.files) { // Check if user pass a picture
 
-      if (error) {
-         res.send(error)
-      } else {
+      Recipe.create({
+         ...req.body,
+         image: '/recipes/recipe-default.jpg',
+         author: req.session.userId
+      }, (error) => {
 
-         Recipe.create({
+         if (error) {
+            const recipeErrors = Object.keys(error.errors).map(key => error.errors[key].message) 
+            req.flash('recipeErrors', recipeErrors)
+            req.flash('recipeData', req.body)
+            return res.redirect('/blog/recipe/create')
+         }
 
-            ...req.body,
+         res.redirect(`/user/recipes/${req.session.userId}`)
+      })
 
-            image: `/recipes/${image.name}`,
+   } else {
 
-            author: req.session.userId
-
-         },
-         (error, recipe) => {
-            if (error) console.log(error)
-            res.redirect('/')
-         })
-
-      }
+      const { image } = req.files
    
-   })
+      image.mv(path.resolve('public/recipes', image.name), (error) => {
+   
+         if (error) {
+            // res.send(error)
+            console.log(error)
+         } else {
+   
+            Recipe.create({
+               ...req.body,
+               image: `/recipes/${image.name}`,
+               author: req.session.userId
+            },
+            (error) => {
+               if (error) {
+                  const recipeErrors = Object.keys(error.errors).map(key => error.errors[key].message) 
+                  req.flash('recipeErrors', recipeErrors)
+                  req.flash('recipeData', req.body)
+                  return res.redirect('/blog/recipe/create')
+            }
+            res.redirect(`/user/recipes/${req.session.userId}`)
+            })
+         }
+      
+      })
+
+   }
+   
 }

@@ -110,8 +110,9 @@ p {
     margin-bottom: 1rem;
 }
 
-.section.lb {
-    background-color: #f3f3f3;
+.section.lb,
+.section.wb {
+    background-color: var(--bg-color);
 }
 
 .grid-style .col-md-3 {

@@ -6,7 +6,6 @@ module.exports = async (req, res) => {
 
     const recipe = await Recipe.findById(req.params.id).populate('author')
    
-   
     res.render('recipe', { title: recipe.title, recipe })
  
 

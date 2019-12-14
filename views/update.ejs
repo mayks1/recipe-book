@@ -9,7 +9,7 @@
                 <div class="sidebar">
                     <div class="widget box-shadow--lightgrey">
                         <div class="alert alert-secondary text-center text-uppercase" role="alert">
-                            Публикувайте Вашата Любима Рецепта
+                            Редакция на Рецепта
                         </div>
 
                         <!-- Display Reg. Errors -->
@@ -24,14 +24,18 @@
 
                         <hr class="invis">
 
-                        <form action="/blog/recipe/create" class="form-wrapper" method="POST" encType="multipart/form-data">
-                            <!-- <input type="text" name="username" class="form-control" placeholder="Потребител:"> -->
-                            <input type="text" name="title" value="<%= recipeData.title %>" class="form-control" placeholder="Заглавие:">
-                            <input type="text" name="category" value="<%= recipeData.category %>" class="form-control" placeholder="Категория:">
-                            <input type="text" name="ingredients" value="<%= recipeData.ingredients %>" class="form-control" placeholder="Продукти:">
-                            <textarea name="content" class="form-control" placeholder="Начин на приготвяне:"><%= recipeData.content %></textarea>
-                            <span class="label label-danger">Качете снимка на вашата рецепта.</span>
-                            <input type="file" name="image" class="form-control-file">
+                        <div class="recipe-image">
+                            <img class="responsive-img" src="<%= recipe.image %>" allowfullscreen></img>
+                        </div>
+
+                        <hr class="invis">
+
+                        <form action="/blog/recipe/<%= recipe._id %>/update" class="form-wrapper" method="POST" encType="multipart/form-data">
+                            <input type="text" name="title" value="<%= recipe.title %>" class="form-control" placeholder="Заглавие:">
+                            <input type="text" name="category" value="<%= recipe.category %>" class="form-control" placeholder="Категория:">
+                            <input type="text" name="ingredients" value="<%= recipe.ingredients %>" class="form-control" placeholder="Продукти:">
+                            <textarea name="content" class="form-control" placeholder="Начин на приготвяне:"><%= recipe.content %></textarea>
+                            <input type="file" name="image" value="recipe.image" class="form-control-file">
                             <button type="submit" class="btn btn-primary mt-3">Запиши <i class="fa fa-envelope-open-o"></i></button>
                         </form>
                     </div>
